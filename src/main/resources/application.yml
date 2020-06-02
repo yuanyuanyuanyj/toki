@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: toki-test
   datasource:
     url: jdbc:mysql://localhost:3306/sharding_0?serverTimezone=UTC
     username: root
@@ -10,8 +8,28 @@ spring:
       min-idle: 5                                # 数据库连接池的最小维持连接数
       initial-size: 5                            # 初始化连接数
       max-total: 5                               # 最大连接数
-      max-wait-millis: 150                       # 等待连接获取的最大超时时间   
+      max-wait-millis: 150                       # 等待连接获取的最大超时时间  
+  # hikari 连接池配置   serverTimezone=UTC
+    hikari:
+      minimum-idle: 5 # 最小链接数
+      maximum-pool-size: 15 # 最大连接数
+      auto-commit: true # 自动提交
+      idle-timeout: 30000 # 最大空闲时间（毫秒）
+      pool-name: DataPoolHikari # 链接池名
+      max-lifetime: 180000 # 最大生命周期（毫秒）
+      connection-timeout: 30000 # 连接超时时间（毫秒）
+      connection-test-query: SELECT 1 # 心跳检测 
 server:
   port: 8080
 
-
+#后台显示执行的sql
+logging:
+  level:
+    com:
+      zjxx:
+        nyxmsb:
+          modular:
+            project:
+              mapper: info
+            system:
+              mapper: info
