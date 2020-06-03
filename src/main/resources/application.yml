@@ -20,7 +20,7 @@ spring:
       connection-timeout: 30000 # 连接超时时间（毫秒）
       connection-test-query: SELECT 1 # 心跳检测 
 server:
-  port: 8080
+  port: 8081
 
 #后台显示执行的sql
 logging:
